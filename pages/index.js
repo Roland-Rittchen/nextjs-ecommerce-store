@@ -2,12 +2,20 @@
 import Head from 'next/head';
 import Image from 'next/image';
 // import { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
 import vercelLogo from '../public/vercel.svg';
 
+// import { getItemsInCart } from '../util/cookies';
+
 export default function Home() {
+  // const [cartItemNumber, setCartItemNumber] = useState(0);
+
+  // let itemNumber = getItemsInCart('cart');
+  // useEffect(() => {
+  //   setCartItemNumber(itemNumber);
+  // }, [itemNumber]);
+
   return (
-    <Layout>
+    <>
       <Head>
         <title>Home</title>
         <meta name="description" content="Welcome to my website" />
@@ -33,6 +41,6 @@ export default function Home() {
         <div>Option 2: Loading image with img tag</div>
         <img src="/vercel.svg" alt="Vercel" />
       </div>
-    </Layout>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const headerStyles = css`
   background-color: #eee;
@@ -12,17 +13,23 @@ const headerStyles = css`
   }
 `;
 
-export default function Header() {
+export default function Header({ cartItemNumber }) {
+  const [numberOfItems, setNumberOfItems] = useState(0);
+
+  useEffect(() => {
+    setNumberOfItems(cartItemNumber);
+  }, [cartItemNumber]);
+
   return (
     <header css={headerStyles}>
       <Link href="/">
         <a>Home</a>
       </Link>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
       <Link href="/products">
         <a>Products</a>
+      </Link>
+      <Link href="/cart">
+        <a>Cart {numberOfItems}</a>
       </Link>
     </header>
   );

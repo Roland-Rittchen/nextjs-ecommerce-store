@@ -1,6 +1,17 @@
 import { css, Global } from '@emotion/react';
+import { useEffect, useState } from 'react';
+import Layout from '../components/Layout';
+import { getItemsInCart } from '../util/cookies';
 
 function MyApp({ Component, pageProps }) {
+  const [cartItemNumber, setCartItemNumber] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener('click', () => {
+      const itemNumber = getItemsInCart('cart');
+      setCartItemNumber(itemNumber);
+    });
+  });
   return (
     <>
       <Global
@@ -19,7 +30,9 @@ function MyApp({ Component, pageProps }) {
         `}
       />
       {/* Component for each one of the pages */}
-      <Component {...pageProps} />
+      <Layout cartItemNumber={cartItemNumber}>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
