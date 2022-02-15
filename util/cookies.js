@@ -12,6 +12,10 @@ export function setParsedCookie(key, value) {
   Cookies.set(key, JSON.stringify(value));
 }
 
+export function deleteCookie(key) {
+  Cookies.remove(key);
+}
+
 export function getItemsInCart(key) {
   const cookie = getParsedCookie(key);
   let num = 0;
@@ -33,8 +37,8 @@ export function getItemsInCart(key) {
   // }
 }
 
-export function addShoppingToCookie(id, quantity) {
-  const cookieValue = getParsedCookie('cart') || [];
+export function addShoppingToCookie(key, id, quantity) {
+  const cookieValue = getParsedCookie(key) || [];
   const existIdOnArray = cookieValue.some((cookieObject) => {
     return cookieObject.id === id;
   });
@@ -48,5 +52,5 @@ export function addShoppingToCookie(id, quantity) {
   } else {
     newCookie = [...cookieValue, { id: id, quantity: quantity }];
   }
-  setParsedCookie('cart', newCookie);
+  setParsedCookie(key, newCookie);
 }

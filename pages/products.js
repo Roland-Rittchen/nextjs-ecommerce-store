@@ -13,7 +13,7 @@ const productstyles = css`
 
 export default function Products(props) {
   function buy(id, quantity) {
-    addShoppingToCookie(id, quantity);
+    addShoppingToCookie('cart', id, quantity);
   }
 
   return (

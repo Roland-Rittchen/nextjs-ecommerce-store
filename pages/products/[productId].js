@@ -8,7 +8,7 @@ export default function SingleProducts(props) {
 
   function buy() {
     const inp = document.getElementById('numberToBuy');
-    addShoppingToCookie(props.product.id, numberToBuy);
+    addShoppingToCookie('cart', props.product.id, numberToBuy);
     inp.value = '1';
   }
   return (

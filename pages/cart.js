@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { cartSum } from '../util/cart';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
 import { getProducts } from '../util/database';
 
@@ -31,12 +32,8 @@ export default function Cart(props) {
   }, [cart, props.products]);
 
   useEffect(() => {
-    let newTotal = 0;
-    for (const element of detailedCart) {
-      newTotal += element.price * element.qty;
-    }
-    setTotalPrice(newTotal);
-  }, [detailedCart]);
+    setTotalPrice(cartSum('cart', cart, props.products));
+  }, [cart, props.products]);
 
   // console.log('cart details ' + JSON.stringify(cartDetails));
 
