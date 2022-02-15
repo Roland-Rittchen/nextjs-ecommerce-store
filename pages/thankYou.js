@@ -1,9 +1,17 @@
+import Head from 'next/head';
 import Link from 'next/link';
 
 export default function ThankYou() {
   return (
     <>
-      <h1>Thank You!</h1>
+      <Head>
+        <title>Thank you for your order</title>
+        <meta
+          name="order confirmation"
+          content="Order confirmation and thank you page"
+        />
+      </Head>
+      <h1>Thank you for your order</h1>
       <div>
         Our little drone is now buzzing to get the ordered items for you. Every
         little detail will be checked and double-checked by our quality wizards

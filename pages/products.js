@@ -28,9 +28,7 @@ export default function Products(props) {
           <div key={`products-${products.id}`} css={productstyles}>
             {/* Dynamic link, eg. /productsproducts/1, /productsproducts/2, etc */}
             <Link href={`/products/${products.id}`}>
-              <a>
-                {products.name} is an {products.type}
-              </a>
+              <a data-test-id={`product-${products.id}`}>{products.name}</a>
             </Link>{' '}
             <button onClick={() => buy(products.id, 1)}>Buy</button>
           </div>

@@ -26,10 +26,12 @@ export default function Header({ cartItemNumber }) {
         <a>Home</a>
       </Link>
       <Link href="/products">
-        <a>Products</a>
+        <a data-test-id="products-link">Products</a>
       </Link>
       <Link href="/cart">
-        <a>Cart {numberOfItems}</a>
+        <a data-test-id="cart-link">
+          Cart <span data-test-id="cart-count">{numberOfItems}</span>
+        </a>
       </Link>
     </header>
   );

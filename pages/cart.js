@@ -62,7 +62,7 @@ export default function Cart(props) {
     <>
       <Head>
         <title>Cart</title>
-        <meta name="description" content="Welcome to my website" />
+        <meta name="Cart page" content="The products in your shopping car" />
       </Head>
 
       <div>
@@ -70,19 +70,32 @@ export default function Cart(props) {
         <br />
         {detailedCart.map((singleItem) => {
           return (
-            <div key={`products-${singleItem.id}`} css={productstyles}>
+            <div
+              key={`products-${singleItem.id}`}
+              css={productstyles}
+              data-test-id={`cart-product-${singleItem.id}`}
+            >
               <span>{singleItem.qty} x </span>
               <Link href={`/products/${singleItem.id}`}>
                 <a>{singleItem.name}</a>
               </Link>{' '}
               <span>{singleItem.price} Euro</span>
-              <button onClick={() => remove(singleItem.id)}>Remove</button>
+              <button
+                onClick={() => remove(singleItem.id)}
+                data-test-id={`cart-product-remove-${singleItem.id}`}
+              >
+                Remove
+              </button>
             </div>
           );
         })}
-        <div>Total price: {totalPrice}</div>
+        <div>Total price: </div>
+        <span data-test-id="cart-total">{totalPrice}</span>
+        <br />
         <Link href="/checkout" passHref>
-          <button component="a">Purchase</button>
+          <button component="a" data-test-id="cart-checkout">
+            Purchase
+          </button>
         </Link>
       </div>
     </>

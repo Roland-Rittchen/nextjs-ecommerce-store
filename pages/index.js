@@ -20,8 +20,6 @@ export default function Home() {
         <title>Home</title>
         <meta name="description" content="Welcome to my website" />
       </Head>
-      {/* boolean, emptyString or null are not rendered by React  */}
-      {/* JSON.stringify([true, false, [], null]) */}
 
       <div>
         <h1>Home page</h1>

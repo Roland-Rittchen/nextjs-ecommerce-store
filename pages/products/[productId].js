@@ -1,16 +1,15 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { useState } from 'react';
 import { addShoppingToCookie } from '../../util/cookies';
 import { getProducts } from '../../util/database';
 
 export default function SingleProducts(props) {
-  const [numberToBuy, setNumberToBuy] = useState(0);
+  const [numberToBuy, setNumberToBuy] = useState(1);
 
   function buy() {
-    addShoppingToCookie(props.product.id, numberToBuy);
     const inp = document.getElementById('numberToBuy');
-    inp.value = '';
+    addShoppingToCookie(props.product.id, numberToBuy);
+    inp.value = '1';
   }
   return (
     <>
@@ -19,17 +18,14 @@ export default function SingleProducts(props) {
           {props.product.name} ({props.product.type})
         </title>
         <meta
-          description={`${props.product.name} is a ${props.product.type}`}
+          description={`${props.product.name} is a ${props.product.type} pc case`}
         />
       </Head>
       <h1>{props.product.name}</h1>
-      <Image
+      <img
+        alt={`product ${props.product.pic1}`}
+        data-test-id="product-image"
         src={`/productPictures/${props.product.pic1}.jpg`}
-        width="300"
-        height="300"
-      />
-      <Image
-        src={`/productPictures/${props.product.pic2}.jpg`}
         width="300"
         height="300"
       />
@@ -37,13 +33,22 @@ export default function SingleProducts(props) {
       <div>name: {props.product.name}</div>
       <div>type: {props.product.type}</div>
       <br />
+      <span>price: </span>
+      <span data-test-id="product-price">{props.product.price}</span>
+      <span>€</span> <br />
       <input
         id="numberToBuy"
+        data-test-id="product-quantity"
+        type="number"
+        min="1"
+        value={numberToBuy}
         onChange={(e) => {
           setNumberToBuy(parseInt(e.target.value));
         }}
       />
-      <button onClick={buy}>add to cart</button>
+      <button onClick={buy} data-test-id="product-add-to-cart">
+        add to cart
+      </button>
     </>
   );
 }
