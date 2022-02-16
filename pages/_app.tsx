@@ -1,9 +1,10 @@
 import { css, Global } from '@emotion/react';
+import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { getItemsInCart } from '../util/cookies';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   const [cartItemNumber, setCartItemNumber] = useState(0);
 
   useEffect(() => {

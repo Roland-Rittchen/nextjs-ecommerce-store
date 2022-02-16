@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Product } from '../util/cart';
 import { addShoppingToCookie } from '../util/cookies';
 import { getProducts } from '../util/database';
 
@@ -11,8 +12,12 @@ const productstyles = css`
   margin-bottom: 20px;
 `;
 
-export default function Products(props) {
-  function buy(id, quantity) {
+type Props = {
+  products: Product[];
+};
+
+export default function Products(props: Props) {
+  function buy(id: number, quantity: number) {
     addShoppingToCookie('cart', id, quantity);
   }
 
@@ -20,7 +25,11 @@ export default function Products(props) {
     <>
       <Head>
         <title>products</title>
-        <meta description="A list of productsproducts and their accessories" />
+        <meta>
+          {' '}
+          name='description' content="A list of productsproducts and their
+          accessories"{' '}
+        </meta>
       </Head>
       <h1>Products</h1>
       {props.products.map((products) => {
@@ -46,23 +55,9 @@ export default function Products(props) {
 // getServerSideProps is exported from your files
 // (ONLY FILES IN /pages) and gets imported
 // by Next.js
-export async function getServerSideProps(context) {
-  const cartOnCookies = context.req.cookies.cart || '[]';
-
-  // if there is no likedproducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
-  const cart = JSON.parse(cartOnCookies);
-  // Important:
-  // - Always return an object from getServerSideProps
-  // - Always return a key in that object that is
-  // called props
-
-  // 1. get the cookies from the browser
-  // 2. pass the cookies to the frontend
+export async function getServerSideProps() {
   return {
     props: {
-      // In the props object, you can pass back
-      // whatever information you want
-      cart: cart,
       products: await getProducts(),
     },
   };

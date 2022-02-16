@@ -19,7 +19,7 @@ export default function ThankYou() {
         CEO Antje plays a sad lullaby as we say goodbye to the shipment.
       </div>
       <Link href="/" passHref>
-        <button component="a">Continue Shopping</button>
+        <button>Continue Shopping</button>
       </Link>
     </>
   );
