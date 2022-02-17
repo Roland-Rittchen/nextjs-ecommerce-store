@@ -64,5 +64,8 @@
     "@typescript-eslint/parser": "5.10.2",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-react": "7.28.0"
-  }
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
