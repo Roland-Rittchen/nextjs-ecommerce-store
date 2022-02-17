@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PGHOST: localhost
-      PGDATABASE: next_js_example_jan_2022
-      PGUSERNAME: next_js_example_jan_2022
-      PGPASSWORD: next_js_example_jan_2022
+      PGDATABASE: nextjs_ecommerce_store
+      PGUSERNAME: nextjs_ecommerce_store
+      PGPASSWORD: nextjs_ecommerce_store
+
     steps:
       - name: Start preinstalled PostgreSQL on Ubuntu
         run: |
@@ -38,6 +39,6 @@ jobs:
       # Run the migrations
       - run: yarn migrate up
       # Build the Next.js application
-      - run: yarn build
+      - run: yarn next build
       # Run the Jest unit tests
       - run: yarn jest --config integration/jest.config.mjs
