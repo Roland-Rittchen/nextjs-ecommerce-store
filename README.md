@@ -43,10 +43,4 @@ SELECT * FROM products;
 
 ## Deployment instructions
 
-Create a readme with:
-Title
-Description
-List of all technologies used
-1 or 2 screenshots
-Setup instructions
-Deployment instructions
+
