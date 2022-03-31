@@ -7,6 +7,12 @@ const headerStyles = css`
   padding: 10px 15px;
   border-radius: 4px;
   margin: 8px 8px 20px;
+  color: black;
+  text-decoration-line: none;
+  font-weight: bold;
+  &:hover {
+    color: purple;
+  }
 
   a + a {
     margin-left: 10px;
