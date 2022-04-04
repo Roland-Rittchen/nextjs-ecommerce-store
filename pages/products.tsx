@@ -25,11 +25,7 @@ export default function Products(props: Props) {
     <>
       <Head>
         <title>products</title>
-        <meta>
-          {' '}
-          name='description' content="A list of productsproducts and their
-          accessories"{' '}
-        </meta>
+        <meta name="description" content="A list of products and their accessories" />
       </Head>
       <h1>Products</h1>
       {props.products.map((products) => {
